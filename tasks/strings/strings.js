@@ -8,20 +8,24 @@
  * console.log(reverseString(123)) // 'This is not a string!'
  */
 function reverseString(str) {
-  
+  if (typeof str == 'number') {
+    return "This is not a string!"
+  } else {
+    return [...str].reverse().join("");
+  }
 }
 
 /**
  * Calculate a century by given year if a number is passed
-* @param {number} year
-* @return {num} century
-* @example
-* console.log(centuryFromYear(1705)) // 18
-* console.log(centuryFromYear(1900)) // 19
-* console.log(centuryFromYear(1601)) // 17
-*/
+ * @param {number} year
+ * @return {num} century
+ * @example
+ * console.log(centuryFromYear(1705)) // 18
+ * console.log(centuryFromYear(1900)) // 19
+ * console.log(centuryFromYear(1601)) // 17
+ */
 function centuryFromYear(year) {
-  
+  return Math.ceil(year / 100);
 }
 
 /**
@@ -34,8 +38,8 @@ function centuryFromYear(year) {
  * console.log(strCount('Hello', 'l')) // 2
  * console.log(strCount('', 'z')) // 0
  */
-function strCount(str, char) {
-
+function strCount(str, char) {
+  return (str.match(new RegExp(char, "gi")) || []).length;
 }
 
 /**
@@ -49,8 +53,8 @@ function strCount(str, char) {
  * console.log(truncateString('This is a long string', 6)) // 'This i...'
  * console.log(truncateString('This', 6)) // 'This'
  */
-function truncateString(str, num) {
-
+function truncateString(str, num) {
+  return str.length <= num ? str : str.slice(0, num) + "...";
 }
 
 /**
@@ -61,7 +65,7 @@ function truncateString(str, num) {
  * console.log(replace10("231054")) // 23ten54
  */
 function replace10(text) {
-
+  return text.replace(/10/g, 'ten');
 }
 
 /**
@@ -72,7 +76,7 @@ function replace10(text) {
  * console.log(replaceConfidential("lorem [ipsum] si dolor")) // lorem [CONFIDENTIAL] si dolor
  */
 function replaceConfidential(text) {
-
+  return text.replace(/\[(.*?)\]/g, '[CONFIDENTIAL]');
 }
 
 module.exports = {
