@@ -3,7 +3,7 @@
  *
  */
 function sum(a, b) {
-	
+	return (a + b);
 }
 
 /**
@@ -15,7 +15,7 @@ function sum(a, b) {
  * }
  */
 function getFullName(object) {
-
+	return `${object.firstName} ${object.lastName}`;
 }
 
 /**
@@ -23,7 +23,7 @@ function getFullName(object) {
  * true if odd, false if even
  */
 function isOdd(n) {
-
+	return n % 2 === 1 ? true : false;
 }
 
 /**
@@ -31,7 +31,7 @@ function isOdd(n) {
  * e.g ["one", "two", "three"] should return one
  */
 function getShortest(wordArray) {
-
+	return wordArray.sort((a, b) => a.length - b.length)[0];
 }
 
 /**
@@ -39,7 +39,7 @@ function getShortest(wordArray) {
  * e.g getGoogle(5) should return "gooooogle"
  */
 function getGoogle(n) {
-
+	return `g${'o'.repeat(n)}gle`;
 }
 
 /**
@@ -52,8 +52,12 @@ function getGoogle(n) {
  *    age: 42
  * }
  */
-function getUser(firstName, lastName, age) {
-
+function getUser(firstName = null, lastName = null, age = null) {
+	return {
+		firstName: firstName,
+		lastName: lastName,
+		age: age,
+	};
 }
 
 /**
@@ -63,7 +67,11 @@ function getUser(firstName, lastName, age) {
  */
 
 function getTotalPath(path) {
-
+	let totalPath = 0;
+	for (const route of path) {
+		totalPath += route.distance;
+	}
+	return totalPath;
 }
 
 /**
@@ -79,6 +87,7 @@ function getTotalPath(path) {
 function discountFunction(percentage) {
 
 	return function (amount) {
+		return amount - amount * percentage / 100;
 	};
 }
 
@@ -95,10 +104,12 @@ const myObject = {
 	age: 25,
 	friends: ['Mike', 'Alan', 'Daniel'],
 	keys() {
-		//write your code here
+		for (const key in this) {
+			console.log(key);
+		}
 	},
 	call() {
-		//write your code here
+		return `My name is ${this.name} ${this.lastName} and I am ${this.age} years old. My best friend is ${this.friends[this.friends.length-1]}`;
 	}
 
 };

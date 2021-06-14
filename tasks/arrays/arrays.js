@@ -3,41 +3,53 @@
  * @param {Array} chars
  * @return {Array} - char names
  */
-function getCharactersNames(chars) {}
+function getCharactersNames(chars) {
+	return chars.map(el => el.name);
+}
 
 /**
  * print (console.log) names of all characters
  * @param {Array} chars
  */
-function printCharacterNames(chars) {}
+function printCharacterNames(chars) {
+	chars.forEach(el => console.log(el.name));
+}
 
 /**
  * return an array of non-human (species !== 'human') characters
  * @param {Array} chars
  * @return {Array} - non human characters
  */
-function getNonHumanCharacters(chars) {}
+function getNonHumanCharacters(chars) {
+	return chars.filter(el => el.species !== "Human");
+}
 
 /**
  * return info about character named 'Jerry Smith'
  * @param {Array} chars
  * @return {Object} - Jerry object
  */
-function getJerryInfo(chars) {}
+function getJerryInfo(chars) {
+	return chars.find(el => el.name == "Jerry Smith");
+}
 
 /**
  * check if all characters are human. return true if all, false if not
  * @param {Array} chars
  * @return {boolean}
  */
-function isAllHuman(chars) {}
+function isAllHuman(chars) {
+	return chars.every(el => el.name == "Human");
+}
 
 /**
  * check if there are any Fish-Person characters. return true if any, false if not
  * @param {Array} chars
  * @return {boolean}
  */
-function isAnyFishPerson(chars) {}
+function isAnyFishPerson(chars) {
+	return chars.some(el => el.type == "Fish-Person");
+}
 
 /**
  * 1. Write a method to find an index of minimal item from an array;
@@ -47,7 +59,7 @@ function isAnyFishPerson(chars) {}
  * console.log(minItem([2,5,6,3,1,8])) // 4
  */
 function minItem(arr) {
-	//PLACE YOUR CODE HERE
+	return arr.reduce((minIndex, current, index) => current < arr[minIndex] ? index : minIndex, 0);
 }
 
 module.exports = {
