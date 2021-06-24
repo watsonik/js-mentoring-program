@@ -17,10 +17,13 @@
 const fs = require('fs');
 
 const jsonParser = () => {
-
+	const json = require('./test.json');
+	const parsedId = json.list.entries.map(item => ({
+		docId: `http://doc.epam.com/${item.entry.name.slice(0, -5)}`
+	}));
+	fs.writeFileSync(`${__dirname}/parsed.json`, JSON.stringify(parsedId, null, '\t'));
 };
 
 module.exports = {
 	jsonParser
 };
-
